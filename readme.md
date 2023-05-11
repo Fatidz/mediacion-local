@@ -1,11 +1,11 @@
 
 # Contenido
 
-1. Instalaciones recomendadas
-2. Como empezar con Laravel
+1. Instalaciones recomendadas 🔧
+2. Como empezar con Laravel 🚀
 3. Acceso a repositorio del PJ
 
-## 1. Instalaciones recomendadas
+## 1. Instalaciones recomendadas 🔧
 
 Se recomienda instalar estas herramientas y en este orden
 
@@ -148,7 +148,79 @@ Algunos contenedores que podrian ser utiles:
         sudo docker pull mcr.microsoft.com/mssql/server:2017-GA-ubuntu
     ```
 
-## 2. Crear empezar con laravel
+## 2. Como empezar con laravel 🚀
+
+Para crear un proyecto laravel, se puede usar composer
+Ejemplo comando
+
+```bash
+composer create-project --prefer-dist laravel/laravel nombre-proyecto "5.8.*"
+```
+
+Para crear un servicio Api rest, los pasos seria: crear el modelo,  tabla y controlador
+lectura recomendada: [Laravel API Tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial)
+
+### 2.1 Crear modelo
+
+Comando para crear un modelo:
+
+```bash
+    php artisan make:model Country
+```
+
+Se crea el archivo en /app
+
+### 2.2 Crear tabla
+
+El siguiente comando crea la plantilla para la estructura de la tabla en database/migrations
+Se recomienda leer: https://laravel.com/docs/4.2/schema
+
+```bash
+    php artisan make:migration create_city_table
+```
+
+Para ejecutar el proceso de crear las tablas:
+
+```bash
+    php artisan migrate
+```
+
+Para insertar datos: se crea un archivo en la carpeta database/seeds
+En este archivo se indica que datos insertar
+Se recomienda leer: https://laravel.com/docs/4.2/migrations
+El comando para crear archivo seeder
+
+```bash
+    php artisan make:seeder CountrySeeder
+```
+
+El comando para ejecutar el proceso para insertar datos:
+
+```bash
+    php artisan db:seed
+```
+
+
+### 2.3 Crear controlador
+
+Comando para crear controlador
+
+```bash
+    php artisan make:controller CountryController
+```
+
+Se crea en app/Http/Controllers. Dentro se deben definir todas las acciones del api
+
+
+### 2.4 Agregar endpoints al routes
+Se debe agregar en routes/api.php para que sea accesible, con un nombre y una acción
+Ejemplo:
+
+    Route::get('countrys', 'CountryController@list');
+    Route::get('country/{id}', 'CountryController@get');
+    Route::post('country', 'CountryController@post');
+    Route::put('country/{id}', 'CountryController@put');
+    Route::delete('country/{id}', 'CountryController@delete');
 
 
 ## 3. Acceso repositorio PJ
