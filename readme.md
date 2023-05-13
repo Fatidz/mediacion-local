@@ -1,75 +1,238 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# Contenido
 
-## About Laravel
+1. Instalaciones recomendadas 🔧
+2. Como empezar con Laravel 🚀
+3. Acceso a repositorio del PJ
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 1. Instalaciones recomendadas 🔧
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Se recomienda instalar estas herramientas y en este orden
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1.1. PHP & Apache
+1.2. Composer
+1.3. Git
+1.4. MySQL (opcional)
+1.5. Gestor de Base de datos
+1.6. Docker (opcional)
 
-## Learning Laravel
+### 1.1 PHP & Apache
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- En Windows
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    Se recomienda instalar XAMPP que es una distribucion que contiene Apache y PHP, e inclusive Mysql/MariaDB.
+    La ultima version en esta pagina [Download XAMPP](https://www.apachefriends.org/es/download.html)
+    Para buscar una version en especial, buscar [aquí](https://sourceforge.net/projects/xampp/files/)
 
-## Laravel Sponsors
+- En Linux Ubuntu
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    Ejectuar estos comandos en la terminal:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+    Agregamos repositorio de php
+    ```bash
+    sudo add-apt-repository ppa:ondrej/php
+    ```
 
-## Contributing
+    Actualizamos paquetes
+    ```bash
+    sudo apt-get update
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```
 
-## Security Vulnerabilities
+    Instalamos php & apache
+    ```bash
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    sudo apt -y install php7.4
 
-## License
+    ```
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    Luego instalamos los principales modulos que nos servira para laravel
+    ```bash
+
+    sudo apt-get install -y php7.4-cli php7.4-json php7.4-common php7.4-mysql php7.4-zip php7.4-gd php7.4-mbstring php7.4-curl php7.4-xml php7.4-bcmath
+    ```
+
+### 1.2. Composer
+
+Composer es el gestor de paquetes de PHP y nos servira para nuestros proyectos en Laravel
+
+Descargar siguiendo las intrucciones de esta pagina: [Composer Download](https://getcomposer.org/download/).
+
+- En Linux ubuntu
+
+    Una vez descargado, renombrar y mover a la carpeta de binarios
+
+    ```bash
+        sudo mv composer.phar /usr/local/bin/composer
+    ```
+
+    Luego verificar si funciona:
+
+    ```bash
+        composer --version
+    ```
+
+### 1.3 Git
+
+Importante para versionar nuestro codigo y trabajar en equipo!
+
+- En Linux Ubuntu
+
+    ```bash
+        sudo apt-get install git-core
+    ```
+
+    ```bash
+        git --version
+    ```
 
 
+    Luego de instalar y verificar, importante configura usuario y correo.
+    ```bash
+        git config --global user.name "Lionel Messi"
+    ```
 
+    ```bash
+        git config --global user.email "<lio.messi@gmail.com>"
+    ```
+
+### 1.4 MySQL
+
+Recomendable tener instalado esta base de datos para desarrollo, poder trabajar en forma local antes de meter tus cambios en la base de prueba o produccion
+
+- En Linux Ubuntu
+    ```bash
+        sudo apt install mysql-server
+    ```bash
+
+    ```bash
+        sudo mysql
+    ```bash
+
+### 1.5 Gestor de base de datos
+
+Importante tener un gestor de base de datos para acceder a consultar datos, hacer cambios y pruebas
+
+2 opciones muy recomendadas:
+
+- Workbench para mySQL o MariaDB
+- DBeaver para la mayoria de las BD del mercado (Postgres, ORacle, SQL Server, etc)
+
+Workbench en Linux Ubuntu
+    ```bash
+        snap connect mysql-workbench-community:password-manager-service
+    ```bash
+
+Si usas KDE como gestor de ventanas, se recomienda instalar este paquete para no tener problemas de acceso:
+
+    ```bash
+        sudo apt install gnome-keyring
+    ```
+
+
+### 1.6 Docker
+
+Otra instalacion recomendada es usar Docker. Donde puedes crear tus entornos de desarrollo y compartirlo en equipo para tener la misma configuracion en tus proyectos
+
+
+Algunos contenedores que podrian ser utiles:
+
+- PHP 5.6
+    ```bash
+        sudo docker pull hrquinones/myphp56:v01
+    ```
+
+- SQL Server 2017
+
+    ```bash
+        sudo docker pull mcr.microsoft.com/mssql/server:2017-GA-ubuntu
+    ```
+
+## 2. Como empezar con laravel 🚀
+
+Para crear un proyecto laravel, se puede usar composer
+Ejemplo comando
+
+```bash
+composer create-project --prefer-dist laravel/laravel nombre-proyecto "5.8.*"
+```
+
+Para crear un servicio Api rest, los pasos seria: crear el modelo,  tabla y controlador
+lectura recomendada: [Laravel API Tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial)
+
+### 2.1 Crear modelo
+
+Comando para crear un modelo:
+
+```bash
+    php artisan make:model Country
+```
+
+Se crea el archivo en /app
+
+### 2.2 Crear tabla
+
+El siguiente comando crea la plantilla para la estructura de la tabla en database/migrations
+Se recomienda leer: https://laravel.com/docs/4.2/schema
+
+```bash
+    php artisan make:migration create_city_table
+```
+
+Para ejecutar el proceso de crear las tablas:
+
+```bash
+    php artisan migrate
+```
+
+Para insertar datos: se crea un archivo en la carpeta database/seeds
+En este archivo se indica que datos insertar
+Se recomienda leer: https://laravel.com/docs/4.2/migrations
+El comando para crear archivo seeder
+
+```bash
+    php artisan make:seeder CountrySeeder
+```
+
+El comando para ejecutar el proceso para insertar datos:
+
+```bash
+    php artisan db:seed
+```
+
+
+### 2.3 Crear controlador
+
+Comando para crear controlador
+
+```bash
+    php artisan make:controller CountryController
+```
+
+Se crea en app/Http/Controllers. Dentro se deben definir todas las acciones del api
+
+
+### 2.4 Agregar endpoints al routes
+Se debe agregar en routes/api.php para que sea accesible, con un nombre y una acción
+Ejemplo:
+
+    Route::get('countrys', 'CountryController@list');
+    Route::get('country/{id}', 'CountryController@get');
+    Route::post('country', 'CountryController@post');
+    Route::put('country/{id}', 'CountryController@put');
+    Route::delete('country/{id}', 'CountryController@delete');
+
+
+## 3. Acceso repositorio PJ
+
+Es necesario crear una clave ssh
+y para acceso se debe crear un archivo config dentro de la carpeta .ssh
+
+en ese archivo meter estos cambios:
+
+```notepad
+    Host gitlab.local.jussantiago.gov.ar
+    Port 2222
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa
+```
