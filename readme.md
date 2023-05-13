@@ -214,14 +214,35 @@ Se crea en app/Http/Controllers. Dentro se deben definir todas las acciones del 
 
 ### 2.4 Agregar endpoints al routes
 Se debe agregar en routes/api.php para que sea accesible, con un nombre y una acción
+
 Ejemplo:
 
-    Route::get('countrys', 'CountryController@list');
-    Route::get('country/{id}', 'CountryController@get');
-    Route::post('country', 'CountryController@post');
-    Route::put('country/{id}', 'CountryController@put');
-    Route::delete('country/{id}', 'CountryController@delete');
+```php
+    use App\Http\Controllers\CountryController;
 
+    Route::get('/countrys', [CountryController::class, 'list']);
+    Route::get('/country/{id}', [CountryController::class, 'get']);
+    Route::post('/country', [CountryController::class, 'post']);
+    Route::put('/country/{id}', [CountryController::class, 'put']);
+    Route::delete('/country/{id}', [CountryController::class, 'delete']);
+```
+
+### 2.5 Como probar tus endpoints
+
+podes usar postman o el comando curl en tu terminal
+
+Si el server es un apache, el endpoint del ejemplo anterior seria:
+
+http://localhost:9090/mediacion-local/public/api/country
+
+con el comando php artisan server, el endpoint seria:
+
+http://localhost:8000/api/mediador
+
+
+```bash
+    curl --location 'http://localhost:9090/mediacion-local/public/api/mediador'
+```
 
 ## 3. Acceso repositorio PJ
 
